@@ -23,6 +23,3 @@ class CircleButton extends StatelessWidget {
     );
   }
 }
-
-          // shape: BoxShape.circle,
-          // color: Colors.grey.withOpacity(0.1),

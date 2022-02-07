@@ -70,62 +70,82 @@ class _HomeScreenState extends State<HomeScreen>
     return Scaffold(
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
-          SliverAppBar(
-            excludeHeaderSemantics: true,
-            backgroundColor: _theme.primaryColor,
-            title: Text(
-              'facebook clone',
-              style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.w800,
-                  letterSpacing: -1.2,
-                  color: _brightness == Brightness.dark
-                      ? Colors.white
-                      : facebookColor),
-            ),
-            actions: [
-              CircleButton(
-                icon: const FaIcon(
-                  FontAwesomeIcons.search,
-                  size: 22,
+          SliverOverlapAbsorber(
+            handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+            sliver: SliverSafeArea(
+              top: false,
+              sliver: SliverAppBar(
+                excludeHeaderSemantics: true,
+                backgroundColor: _theme.primaryColor,
+                title: Text(
+                  'facebook',
+                  style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: -1.2,
+                      color: _brightness == Brightness.dark
+                          ? Colors.white
+                          : facebookColor),
                 ),
-                onPressed: () {},
-              ),
-              CircleButton(
-                icon: const FaIcon(
-                  FontAwesomeIcons.facebookMessenger,
-                  size: 22,
-                ),
-                onPressed: () {},
-              ),
-            ],
-            snap: true,
-            floating: true,
-            pinned: true,
-            elevation: 0,
-            bottom: TabBar(
-              overlayColor:
-                  MaterialStateProperty.all<Color>(Colors.transparent),
-              labelColor: facebookColor,
-              unselectedLabelColor: _theme.scaffoldBackgroundColor,
-              controller: _tabController,
-              indicatorPadding: const EdgeInsets.symmetric(horizontal: 2),
-              indicatorWeight: 3,
-              tabs: _tabs
-                  .map(
-                    (e) => Tab(
-                      icon: Icon(
-                        _tabController!.index == _tabs.indexOf(e)
-                            ? e['active icon']
-                            : e['icon'],
-                        // color: _tabController!.index == _tabs.indexOf(e)
-                        //     ? facebookColor
-                        //     : _theme.scaffoldBackgroundColor,
-                        size: 32,
-                      ),
+                actions: [
+                  CircleButton(
+                    icon: const FaIcon(
+                      FontAwesomeIcons.search,
+                      size: 22,
                     ),
-                  )
-                  .toList(),
+                    onPressed: () {},
+                  ),
+                  CircleButton(
+                    icon: const FaIcon(
+                      FontAwesomeIcons.facebookMessenger,
+                      size: 22,
+                    ),
+                    onPressed: () {},
+                  ),
+                ],
+                snap: true,
+                floating: true,
+                pinned: true,
+                elevation: 0,
+                bottom: TabBar(
+                  overlayColor:
+                      MaterialStateProperty.all<Color>(Colors.transparent),
+                  // labelColor: facebookColor,
+                  unselectedLabelColor: _theme.scaffoldBackgroundColor,
+                  controller: _tabController,
+                  indicatorPadding: const EdgeInsets.symmetric(horizontal: 2),
+                  //indicatorWeight: 3,
+                  // indicator: const BoxDecoration(
+                  //   color: facebookColor,
+                  //   //border: Border(bottom: BorderSide(width: 3,color: facebookColor,)),
+                  //   shape: BoxShape.circle,
+                  //   borderRadius: BorderRadius.vertical(
+                  //     top: Radius.circular(4),
+                  //   ),
+                  // ),
+                  indicator: const ShapeDecoration(
+                    shape: UnderlineInputBorder(
+                      borderSide: BorderSide(width: 3,color: facebookColor,),
+                        borderRadius:
+                            BorderRadius.only(topLeft: Radius.circular(12),topRight: Radius.circular(12) )),
+                  ),
+                  tabs: _tabs
+                      .map(
+                        (e) => Tab(
+                          icon: Icon(
+                            _tabController!.index == _tabs.indexOf(e)
+                                ? e['active icon']
+                                : e['icon'],
+                            color: _tabController!.index == _tabs.indexOf(e)
+                                ? facebookColor
+                                : _theme.scaffoldBackgroundColor,
+                            size: 32,
+                          ),
+                        ),
+                      )
+                      .toList(),
+                ),
+              ),
             ),
           ),
         ],

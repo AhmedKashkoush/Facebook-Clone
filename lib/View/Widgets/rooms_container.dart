@@ -1,3 +1,4 @@
+import 'package:facebook_clone/View/Widgets/profile_avatar.dart';
 import 'package:flutter/material.dart';
 
 class RoomsContainer extends StatelessWidget {
@@ -39,12 +40,14 @@ class RoomsContainer extends StatelessWidget {
                   width: 10,
                 ),
                 ...List.generate(
-                    15,
-                    (index) => Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 5),
-                        child: const CircleAvatar(
-                          backgroundColor: Colors.grey,
-                        ))),
+                  25,
+                  (index) => Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 5),
+                    child: const ProfileAvatar(
+                      isOnline: true,
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

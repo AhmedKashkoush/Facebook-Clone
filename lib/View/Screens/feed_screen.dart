@@ -16,16 +16,27 @@ class FeedScreen extends StatelessWidget {
       backgroundColor: _theme.primaryColor,
       triggerMode: RefreshIndicatorTriggerMode.anywhere,
       color: facebookColor,
-      child: SingleChildScrollView(
-        child: Column(
-          children: const [
+      child: CustomScrollView(
+        slivers: [
+          SliverOverlapInjector(
+            handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+          ),
+          SliverList(
+              delegate: SliverChildListDelegate(const [
             CreatePostContainer(),
             SizedBox(
               height: 6,
             ),
             RoomsContainer(),
-          ],
-        ),
+          ])),
+          // SingleChildScrollView(
+          //   child: Column(
+          //     children: const [
+          //
+          //     ],
+          //   ),
+          // ),
+        ],
       ),
     );
   }

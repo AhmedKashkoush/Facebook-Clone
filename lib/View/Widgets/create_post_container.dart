@@ -1,5 +1,6 @@
 import 'package:facebook_clone/View/Widgets/post_button.dart';
 import 'package:facebook_clone/View/Widgets/post_text_field.dart';
+import 'package:facebook_clone/View/Widgets/profile_avatar.dart';
 import 'package:flutter/material.dart';
 
 class CreatePostContainer extends StatelessWidget {
@@ -17,9 +18,8 @@ class CreatePostContainer extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
             child: Row(
               children: const [
-                CircleAvatar(
-                  radius: 26,
-                  backgroundColor: Colors.grey,
+                ProfileAvatar(
+                  size: 26,
                 ),
                 SizedBox(
                   width: 10,
@@ -28,45 +28,48 @@ class CreatePostContainer extends StatelessWidget {
               ],
             ),
           ),
-          const Divider(),
-          SizedBox(
-            height: 42,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                PostButton(
-                  text: 'Live',
-                  icon: const Icon(
-                    Icons.videocam,
-                    color: Colors.red,
+          const Divider(height: 2,),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+              height: 36,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  PostButton(
+                    text: 'Live',
+                    icon: const Icon(
+                      Icons.videocam,
+                      color: Colors.red,
+                    ),
+                    onPressed: () {},
                   ),
-                  onPressed: () {},
-                ),
-                const VerticalDivider(
-                  indent: 4,
-                  endIndent: 8,
-                ),
-                PostButton(
-                  text: 'Photo',
-                  icon: const Icon(
-                    Icons.photo_library_outlined,
-                    color: Colors.green,
+                  const VerticalDivider(
+                    indent: 4,
+                    endIndent: 8,
                   ),
-                  onPressed: () {},
-                ),
-                const VerticalDivider(
-                  indent: 4,
-                  endIndent: 8,
-                ),
-                PostButton(
-                  text: 'Room',
-                  icon: Icon(
-                    Icons.video_call,
-                    color: Colors.purple.shade400,
+                  PostButton(
+                    text: 'Photo',
+                    icon: const Icon(
+                      Icons.photo_library_outlined,
+                      color: Colors.green,
+                    ),
+                    onPressed: () {},
                   ),
-                  onPressed: () {},
-                ),
-              ],
+                  const VerticalDivider(
+                    indent: 4,
+                    endIndent: 8,
+                  ),
+                  PostButton(
+                    text: 'Room',
+                    icon: Icon(
+                      Icons.video_call,
+                      color: Colors.purple.shade400,
+                    ),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
             ),
           )
         ],
